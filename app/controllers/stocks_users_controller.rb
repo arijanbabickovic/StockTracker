@@ -1,0 +1,2 @@
+class StocksUsersController < ApplicationController
+end

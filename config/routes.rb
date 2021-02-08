@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stocks_users
   get 'users/my_portfolio'
   devise_for :users
   root 'welcome#index'
