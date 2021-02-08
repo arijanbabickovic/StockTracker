@@ -22,6 +22,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 
+# live stock information API
+gem 'iex-ruby-client'
+# For environment variables
+gem "figaro"
+
+# For nicer display of data in console
+gem 'hirb'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
