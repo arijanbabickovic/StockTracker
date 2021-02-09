@@ -10,13 +10,34 @@
 
 .no-right-padding {
     padding-right: 0px;
-    padding-bottom: 20px;
 }
 
 .results-block {
     display: inline-block;
+    margin-bottom: 1rem;
 }
 
 .log-out-btn {
     margin-right: 5px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.add-btn {
+    margin-left: 1rem;
+}
+
+.cannot-track-badge {
+    margin-left: 1rem;
+}
+
+.user-name {
+    margin-top: 3.5%;
+    padding-right: 10px;
+}
+
+.table-icon {
+    text-align: center;
 }

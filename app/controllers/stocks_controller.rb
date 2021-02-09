@@ -4,7 +4,7 @@ class StocksController < ApplicationController
     if params[:stock].present?
       @stock = Stock.lookup(params[:stock])
       if @stock
-        # render 'users/my_portfolio'
+        # render 'users/my_portfolio' without javascript
         respond_to do |format|
           format.js { render partial: 'users/result' }
         end
