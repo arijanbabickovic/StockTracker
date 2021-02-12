@@ -43,12 +43,12 @@ class User < ApplicationRecord
     matches('last_name', param)
   end
 
-  def self.email.matches(param)
+  def self.email_matches(param)
     matches('email', param)
   end
 
   def self.matches(field_name, param)
-    where ("#{field_name} like?", "%#{param}%")
+    where("#{field_name} like?", "%#{param}%")
   end
 
 end

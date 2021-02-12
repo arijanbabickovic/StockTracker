@@ -29,7 +29,7 @@ gem "figaro"
 
 # For nicer display of data in console
 gem 'hirb'
-
+gem 'pry'
 # For icons
 gem "font-awesome-rails"
 # Use Active Storage variant
