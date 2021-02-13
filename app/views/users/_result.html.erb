@@ -9,7 +9,7 @@
     <strong>Price: </strong> <%= @stock.last_price %>
     <% if current_user.can_track_stocks?(@stock.ticker) %>
       <%# Below we are sending the current user and the ticker of the stock to the stocks_users controller %>
-      <%= link_to 'Add to portfolio', stocks_users_path(user: current_user.id, abc: @stock.ticker), 
+      <%= link_to 'Add to portfolio', stocks_users_path(user: current_user.id, ticker: @stock.ticker), 
                                                         class: "btn btn-xs btn-success add-btn", method: :post %>
     <% else %>
       <span class="badge bg-warning rounded-pill cannot-track-badge">

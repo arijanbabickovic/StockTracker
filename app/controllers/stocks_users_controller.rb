@@ -1,7 +1,6 @@
 class StocksUsersController < ApplicationController
 
   def create
-    pry.binding
     stock = Stock.check_db(params[:ticker]) # This :ticker is sent from the result partial as an argument
     if stock.blank?
     # if Stock.exists?(ticker: params[:ticker])

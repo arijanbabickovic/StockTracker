@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   resources :stocks_users, only: [:create, :destroy]
-  get 'users/my_portfolio'
   devise_for :users
   root 'welcome#index'
-  get 'my_friends', to: 'users#my_friends'
   get 'my_portfolio', to: 'users#my_portfolio'
   get 'search_stock', to: 'stocks#search'
+  get 'my_friends', to: 'users#my_friends'
   get 'search_friend', to: 'users#search'
+  resources :friendships, only: [:create, :destroy]
+  resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-sm-9 ">
-    <table class="table table-dark table-striped table-hover">
+  <div class="col-sm-9">
+    <table class="table table-dark table-striped table-hover table-bordered">
       <thead>
         <tr>
           <th scope="col">Ticker Symbol</th>
@@ -10,18 +10,34 @@
         </tr>
       </thead>
       <% @tracked_stocks.each do |stock| %>
-      <tbody>
-        <tr>
-          <th scope="row"><%= stock.ticker %></th>
-          <td><%= stock.name %></td>
-          <td><%= stock.last_price %></td>
-          <td class="trash-icon">
-            <%= link_to stocks_user_path(stock), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
-              <%= fa_icon 'trash' %>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
+        <tbody>
+          <tr>
+            <th scope="row"><%= stock.ticker %></th>
+            <td><%= stock.name %></td>
+            <td><%= stock.last_price %></td>
+            <td class="trash-icon">
+              <% if current_user.can_track_stocks?(stock.ticker) %>
+                <%# Below we are sending the current user and the ticker of the stock to the stocks_users controller %>
+                <%= link_to 'Add to portfolio', stocks_users_path(user: current_user.id, ticker: stock.ticker), 
+                                                                  class: "btn btn-sm btn-success add-btn", method: :post %>
+              <% elsif current_user.id != @user.id %>
+                <span class="badge bg-warning rounded-pill cannot-track-badge">
+                  Already tracking 
+                  <% if !current_user.under_stock_limit? %>
+                    10 stocks.
+                  <% else %>
+                    this stock.
+                  <% end %>
+                </span>
+              <% end %>
+              <% if current_user.id == @user.id %>
+                <%= link_to stocks_user_path(stock), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
+                  <%= fa_icon 'trash' %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
       <% end %>
     </table>
   </div>
